@@ -1,0 +1,195 @@
+_type: export
+__export_format: 4
+__export_date: 2022-07-07T01:08:47.217Z
+__export_source: insomnia.desktop.app:v2022.4.2
+resources:
+  - _id: req_53963e446c124b9f96e60ea542858216
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657152686393
+    created: 1657151081312
+    url: localhost:8001
+    name: Local Kong Config
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081312
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_ac55384a466647e898e57808c323c5a4
+    parentId: null
+    modified: 1657151081237
+    created: 1657151081237
+    name: New Document
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_d779f950c84847659409f7668db61095
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657152793205
+    created: 1657152784840
+    url: localhost:8001/services
+    name: Local Kong Service
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081262
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9ce5cfce2d0f4df0a59f09df79c9dd8f
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657155233000
+    created: 1657153671652
+    url: localhost:8000
+    name: Local Invoke Service
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081249.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_567206ee2a1346b097782273f84cf0a7
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657155237234
+    created: 1657153510723
+    url: localhost:8001/config
+    name: Local Kong Update Config
+    description: ""
+    method: POST
+    body:
+      mimeType: application/octet-stream
+      fileName: C:\KODING\kong\kong-docker\dbless\config\kong.yaml
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: text/yaml
+        id: pair_dc7c63ab547841e5ad7eb0cef31301fd
+    authentication: {}
+    metaSortKey: -1657151081243.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b9ae32ab083e415fa594377c931dfcf3
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657155942008
+    created: 1657154982773
+    url: localhost:8001/services
+    name: Local Add Service
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "quote-service",
+        	"url": "http://quotes:8080"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_646a19919b5d4e2fb7a7986458853211
+    authentication: {}
+    metaSortKey: -1657151081237
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d87aef64163c471f9d47b6d08a2225dc
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657155941280
+    created: 1657155564731
+    url: localhost:8001/services/quote-service/routes
+    name: Local Add Route
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "quote-service-routes",
+        	"paths": ["/"],
+        	"strip_path": true
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_646a19919b5d4e2fb7a7986458853211
+    authentication: {}
+    metaSortKey: -1657151081187
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_8a3ffa5ecaaafc573a84622e5495459edff067e4
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657151081289
+    created: 1657151081289
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1657151081290
+    _type: environment
+  - _id: jar_8a3ffa5ecaaafc573a84622e5495459edff067e4
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657151081300
+    created: 1657151081300
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_ca3cd8d401af4a228bed18f44df1cd61
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657152699890
+    created: 1657151081276
+    fileName: Kong
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_9c33be23d7ce42f8ba60843626d04ab4
+    parentId: wrk_ac55384a466647e898e57808c323c5a4
+    modified: 1657151081317
+    created: 1657151081317
+    name: Example Test Suite
+    _type: unit_test_suite
