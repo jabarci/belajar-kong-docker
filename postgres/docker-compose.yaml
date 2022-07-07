@@ -14,23 +14,30 @@ services:
       POSTGRES_DB: kong
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 10s
+      timeout: 1s
+      retries: 3
+    volumes:
+      - kong-data:/var/lib/postgresql/data
   kong-bootstrap:
     image: kong:2.5.0-alpine
     hostname: kong-bootstrap
     container_name: kong-bootstrap
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       KONG_DATABASE: postgres
       KONG_PG_HOST: "kong-database"
       KONG_PG_DATABASE: kong
       KONG_PG_USER: kong
       KONG_PG_PASSWORD: kong
-    command: "kong migrations bootstrap"
+    command: "kong migrations bootstrap && kong migrations up && kong migrations finish"
     restart: "on-failure"
   kong:
     image: kong:2.5.0-alpine
-    restart: always
     hostname: kong
     container_name: kong
     depends_on:
@@ -49,10 +56,17 @@ services:
     command: "kong start"
     ports:
       - "8000:8000"
-      - "8443:8443"
       - "8001:8001"
-      - "8444:8444"
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: "on-failure"
   quote-service:
     image: gamussa/reactive-quote-service:0.0.3
     hostname: quotes
     container_name: quotes
+volumes:
+  kong-data:
+    driver: local
