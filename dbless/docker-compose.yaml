@@ -23,3 +23,7 @@ services:
       - "8001:8001"
     volumes:
       - ./config:/opt/kong
+  quote-service:
+    image: gamussa/reactive-quote-service:0.0.3
+    hostname: quotes
+    container_name: quotes
