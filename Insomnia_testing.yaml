@@ -1,15 +1,24 @@
 _type: export
 __export_format: 4
-__export_date: 2022-07-08T08:38:49.596Z
+__export_date: 2022-07-16T03:41:53.285Z
 __export_source: insomnia.desktop.app:v2022.4.2
 resources:
   - _id: req_499b7cc284c942e9bc419b59ab8ab7ad
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269332163
+    modified: 1657504543650
     created: 1657168877960
     url: "{{base_url}}:8001"
-    name: Kong Config
-    description: ""
+    name: Admin API
+    description: >-
+      Kong Gateway comes with an internal RESTful Admin API for administration
+      purposes. Requests to the Admin API can be sent to any node in the
+      cluster, and Kong will keep the configuration consistent across all nodes.
+
+
+      - `8001` is the default port on which the Admin API listens.
+
+
+      **Referensi**: https://docs.konghq.com/gateway/2.8.x/admin-api/
     method: GET
     body: {}
     parameters: []
@@ -32,6 +41,27 @@ resources:
     description: ""
     scope: design
     _type: workspace
+  - _id: req_95ff457eb0b04f898d981f622d2ed6e2
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657335045665
+    created: 1657335040136
+    url: "{{base_url}}:8001/workspaces"
+    name: Kong Workspace
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081287
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_c0b13baa0d0d4a98a207ab9d2d1387d5
     parentId: wrk_49c0b321d0114b64a1cc631518313489
     modified: 1657269363457
@@ -45,6 +75,27 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1657151081262
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7445d89d54ff4292ab4694c98bf390bc
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657334605505
+    created: 1657334595287
+    url: "{{base_url}}:8001/consumers"
+    name: Kong Consumer
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081258.875
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -76,9 +127,9 @@ resources:
     _type: request
   - _id: req_630dbb51658140429abca5d2569ced74
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269400425
+    modified: 1657505603065
     created: 1657170637442
-    url: "{{base_url}}:8001/services/quote-service/plugins"
+    url: "{{base_url}}:8001/plugins"
     name: Kong Plugins
     description: ""
     method: GET
@@ -95,9 +146,30 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_23cb522592154d8a97b6389cca43f635
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657506550725
+    created: 1657334896364
+    url: "{{base_url}}:8001/endpoints"
+    name: List Endpoints
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1657151081251.0625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_664019cb9cd24bf8ba3683ee3597d2dd
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269411726
+    modified: 1657531959538
     created: 1657168877995
     url: "{{base_url}}:8000/v1/quote"
     name: Invoke Service
@@ -142,9 +214,38 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_6cca56dfc62c4ddd8a0d4101055f2ca5
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657505569405
+    created: 1657334993627
+    url: "{{base_url}}:8001/workspaces"
+    name: Add Workspace
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "sbiolink"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_646a19919b5d4e2fb7a7986458853211
+    authentication: {}
+    metaSortKey: -1657151081240.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_a125689540664afd813e4311361be0fd
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269494821
+    modified: 1657506956063
     created: 1657168878007
     url: "{{base_url}}:8001/services"
     name: Add Service
@@ -154,7 +255,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"name": "quote-service",
+        	"name": "quote-service-v5",
         	"url": "http://quotes:8080"
         }
     parameters: []
@@ -172,9 +273,63 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_bf57609e21284011871463f0954644fb
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657505564207
+    created: 1657333972631
+    url: "{{base_url}}:8001/consumers"
+    name: Add Consumer
+    description: >-
+      The Consumer object represents a consumer - or a user - of a Service. You
+      can either rely on Kong as the primary datastore, or you can map the
+      consumer list with your database to keep consistency between Kong and your
+      existing primary datastore.
+
+
+      Consumers can be both tagged and filtered by tags.
+
+
+      **Referensi**: [Klik disini](https://docs.konghq.com/gateway/2.8.x/admin-api/#consumer-object)
+
+
+      ```
+
+      {
+          "id": "ec1a1f6f-2aa4-4e58-93ff-b56368f19b27",
+          "created_at": 1422386534,
+          "username": "my-username",
+          "custom_id": "my-custom-id",
+          "tags": ["user-level", "low-priority"]
+      }
+
+      ```
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "slink",
+        	"custom_id": "slink",
+        	"tags": ["operator", "generator"]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_646a19919b5d4e2fb7a7986458853211
+    authentication: {}
+    metaSortKey: -1657151081212
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_82ddc49e8ba74c848ff359a155db03d5
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269494012
+    modified: 1657526744388
     created: 1657168878018
     url: "{{base_url}}:8001/services/quote-service/routes"
     name: Add Route
@@ -205,11 +360,11 @@ resources:
     _type: request
   - _id: req_e3ebbdb3010d48dfba2558dbca7e51a7
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269493459
+    modified: 1657531939171
     created: 1657170436580
-    url: "{{base_url}}:8001/services/quote-service/plugins"
-    name: Plugins
-    description: >
+    url: "{{base_url}}:8001/plugins"
+    name: Add Plugins
+    description: >-
       ## File Log
 
 
@@ -283,17 +438,75 @@ resources:
 
 
       **Referensi**: https://docs.konghq.com/hub/kong-inc/rate-limiting/
+
+
+      ## Proxy Cache
+
+
+      This plugin provides a reverse proxy cache implementation for Kong. It caches response entities based on configurable response code and content type, as well as request method. It can cache per-Consumer or per-API. Cache entities are stored for a configurable period of time, after which subsequent requests to the same resource will re-fetch and re-store the resource. Cache entities can also be forcefully purged via the Admin API prior to their expiration time.
+
+
+      ```
+
+      {
+          "name": "proxy-cache",
+          "config": {
+              "response_code": [200],
+              "request_method": ["GET", "HEAD"],
+              "content_type": ["text/plain", "application/json"],
+      				"cache_ttl": 300,
+      				"strategy":"memory"
+          }
+      }
+
+      ```
+
+
+      **Referensi**: https://docs.konghq.com/hub/kong-inc/proxy-cache/
+
+
+      ## Request Termination
+
+
+      This plugin terminates incoming requests with a specified status code and message. This allows to (temporarily) stop traffic on a Service or a Route, or even block a Consumer.
+
+
+
+      ```
+
+      {
+          "name": "request-termination",
+          "config": {
+              "status_code": 403,
+              "message": "So long and thanks for all the fish!"
+          }
+      }
+
+      ```
+
+
+      **Referensi**: https://docs.konghq.com/hub/kong-inc/request-termination/
+
+
+      ## Bot Detection
+
+
+      Protects a Service or a Route from most common bots and has the capability of allowing and denying custom clients.
+
+
+      ```
+
+      {
+          "name": "bot-detection"
+      }
+
+      ```
     method: POST
     body:
       mimeType: application/json
       text: |-
         {
-        	"name": "request-size-limiting",
-        	"config": {
-        		"allowed_payload_size": 128,
-        		"size_unit": "megabytes",
-        		"require_content_length": false
-        	}
+            "name": "bot-detection"
         }
     parameters: []
     headers:
@@ -310,19 +523,81 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_e7de6f1a19924b11b9e57271ebccea31
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657508741816
+    created: 1657338741216
+    url: "{{base_url}}:8001/workspaces/default"
+    name: Enable Workspace Portal
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "config": {
+                "portal": true
+            }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_4602b435f24d4a3ab97dab4614ebae78
+    authentication: {}
+    metaSortKey: -1657151081112
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_e87e9b5e9cf04b3cb4cb6e63ddce7fed
     parentId: wrk_49c0b321d0114b64a1cc631518313489
-    modified: 1657269475112
+    modified: 1657332949947
     created: 1657170814443
-    url: "{{base_url}}:8001/plugins/d520be9a-f0af-4666-9eec-8f8637a98100"
+    url: "{{base_url}}:8001/plugins/f11a6e1f-8ff2-4364-a457-308f01e9d055"
     name: Delete Plugin
     description: ""
     method: DELETE
-    body: {}
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params: []
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+        id: pair_b82ee8e7bf8a4190ac69467030dea091
     authentication: {}
     metaSortKey: -1657151081087
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e821de67dd4a423c8dfb806897d5cd92
+    parentId: wrk_49c0b321d0114b64a1cc631518313489
+    modified: 1657507042211
+    created: 1657506951970
+    url: "{{base_url}}:8001/services/e4dd810d-36d8-4927-be10-43a11727234a"
+    name: Delete Services
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params: []
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+        id: pair_b82ee8e7bf8a4190ac69467030dea091
+    authentication: {}
+    metaSortKey: -1657151081037
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
